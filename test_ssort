@@ -1,0 +1,16 @@
+nvals = input('enter number of values to sort: ');
+
+array = zeros(1,nvals);
+
+for ii = 1:nvals
+  
+  string = ['enter value ' int2str(ii) ': '];
+  array(ii) = input(string);
+end
+
+sorted = ssort(array);
+
+fprintf('\nSorted data:\n');
+for ii = 1:nvals
+  fprintf(' %8.4f\n',sorted(ii));
+end
