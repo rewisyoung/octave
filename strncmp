@@ -1,0 +1,11 @@
+str=input('Enter a str:','s');
+c=input('Enter a chr:','s');
+
+count = 0;
+for ii = 1:length(str)
+  if strncmp(str(ii),c,1)
+    count = count + 1;
+  end
+end
+
+fprintf('The letter %c occurs %d in the string.\n',c,count)
