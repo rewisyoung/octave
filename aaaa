@@ -1,0 +1,15 @@
+t=0:1:10;
+function fun1=vp(v,t)
+  if t>=0 & t<=5
+    vp=-v-2*t;
+  else
+    vp=-v+3*t^2;
+  endif
+end
+
+hndl=@fun1;
+tspau=[0 10];
+yo=0;
+[t,y]=ode45(hndl,tspau,yo);
+
+plot(t,y);
