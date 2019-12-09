@@ -1,0 +1,21 @@
+filename = input("Enter file name: ","s");
+out_array = randn(1,10000);
+[fid,msg] = fopen(filename,'w');
+if fid > 0
+  count = fwrite(fid,out_array,'float64');
+  
+  disp([in2str(count) 'values written...']);
+  
+  status = fclose(fid);
+else
+  disp(msg);
+end
+
+[fid,msg] = fopen(filename,'r');
+if fid>0
+     [in_array, count] = fread(fid,[100 100],'float64');
+        disp([int2str(count) 'values read...']);
+      status = fclose(fid);
+else
+      disp(msg);
+end
