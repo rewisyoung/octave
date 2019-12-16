@@ -1,0 +1,62 @@
+out_array = randn(1,10000);
+
+tic;
+#未格式化
+for ii = 1:10
+  
+  [fid,msg] = fopen('unformatted.dat','w');
+  
+  count = fwrite(fid,out_array,'float64');
+  
+  status = fclose(fid);
+  
+end
+
+time = toc/10;
+fprintf('Write time for unformatted file = %6.3f\n',time);
+
+
+tic;
+#格式化
+for ii = 1:10
+  
+  [fid,msg] = fopen('formatted.dat','w');
+  
+  count = fwrite(fid,'%23.15e/n',out_array);
+  
+  status = fclose(fid);
+  
+end
+
+time = toc/10;
+fprintf('Write time for formatted file = %6.3f\n',time);
+
+tic;
+#未格式化
+for ii = 1:10
+  
+  [fid,msg] = fopen('unformatted.dat','w');
+  
+  [in_array, count] = fread(fid,Inf,'float64');
+  
+  status = fclose(fid);
+  
+end
+
+time = toc/10;
+fprintf('Write time for unformatted file = %6.3f\n',time);
+
+tic;
+
+for ii = 1:10
+  
+  [fid,msg] = fopen('formatted.dat','rt');
+  
+  [in_array, count] = fread(fid,'%f',Inf);
+  
+  status = fclose(fid);
+  
+end
+
+time = toc/10;
+fprintf('Write time for formatted file = %6.3f\n',time);
