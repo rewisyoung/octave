@@ -1,0 +1,17 @@
+寫一程式自檔案中獲取任意筆資料 並取出其中最小值雨出現在第幾個
+
+filename1 = input('Enter the input file name: ','s');
+filename2 = input('Enter the output file name: ','s');
+
+fid1 = fopen(filename1,'r');
+
+fid2 = fopen(filename2,'w');
+
+while feof(fid1) ==0
+  value = fscanf(fid1,'%f',1);
+  fprintf(fid2,' %d\n',round(value));
+  
+end
+
+fclose(fid2);
+fclose(fid1);
