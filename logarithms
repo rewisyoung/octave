@@ -1,0 +1,22 @@
+clear all;close all;
+
+[fid,msg] = fopen('logarithms','wt');
+str = ['                Table of Base-10 Logarithms' ...
+       'Between 1.0 and 10.0\n\n'];
+
+fprintf(fid,str);
+
+fprintf(fid,'    ');
+for jj =0:9
+  fprintf(fid,'    0.%1d',jj);
+end
+fprintf(fid,'\n');
+
+for ii =1:9
+  fprintf(fid,'%6.1f',ii);
+  for jj =0:9
+    fprintf(fid,'  %5.3f',log10(ii+jj/10));
+  end
+  fprintf(fid,'\n');
+end
+fclose(fid)
